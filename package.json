@@ -1,0 +1,23 @@
+{
+	"name": "leavenowdev.github.io",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"sass": "sass --watch devStyles/index.scss:assets/css/index.css"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/LeaveNowDev/github.io.git"
+	},
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/LeaveNowDev/github.io/issues"
+	},
+	"homepage": "https://github.com/LeaveNowDev/github.io#readme",
+	"devDependencies": {
+		"sass": "^1.50.1"
+	}
+}
