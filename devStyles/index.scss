@@ -1,5 +1,9 @@
 @import "./mixins";
 @import url("https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap");
+$primary-default: #17cf73;
+$primary-dark: #0f8a4c;
+$border: #404040;
+$text: #eee;
 * {
 	box-sizing: border-box;
 	font-size: 16px;
@@ -13,11 +17,17 @@ html {
 	height: 100vh;
 	font-size: 20px;
 }
+@media screen and (max-width: 800px) {
+	html {
+		font-size: calc(1vw + 10px);
+	}
+}
 
 body {
 	padding: 0;
 	margin: 0;
 	overflow-x: hidden;
+	overflow: hidden;
 	height: 100%;
 	width: 100%;
 	background-image: url("/assets/img/background.jpeg");
@@ -25,14 +35,21 @@ body {
 	background-size: cover;
 	background-position: center;
 }
+.overlay {
+	position: fixed;
+	height: 100vh;
+	width: 100vw;
+	background-color: rgba(0, 0, 0, 0.4);
+	z-index: -1;
+}
 h1,
 h2,
 h3,
 h4,
 h5,
-h5,
+h6,
 p {
-	color: #eee;
+	color: $text;
 	padding: 0;
 	margin: 0;
 }
@@ -51,6 +68,9 @@ p {
 h1 {
 	font-size: 4rem;
 }
+h4 {
+	font-size: 1.25rem;
+}
 h5 {
 	font-size: 1.5rem;
 }
@@ -61,39 +81,98 @@ li {
 	width: 0;
 	height: 0;
 }
+button {
+	background: none;
+	color: inherit;
+	border: none;
+	cursor: pointer;
+	outline: inherit;
+	text-align: center;
+	padding: 0.5rem 1rem;
+	border-radius: 0.25rem;
+	background-color: $primary-dark;
+	color: $text;
+	font-size: 1.5rem;
+}
+#my-input {
+	border: 1px solid $border;
+	background-color: #eeeeee;
+	color: $border;
+	padding: 0.4rem 1rem;
+	font-size: 1.5rem;
+	border-radius: 0.25rem;
+}
+
 #header {
 	width: 100vw;
+	height: 5rem;
 	.header-content {
 		padding: 1rem;
+		max-width: 70rem;
+		margin: 0 auto;
 		@include flex-container(row, space-between, center, nowrap);
 		#logo {
-			height: 3rem;
+			height: 60px;
 		}
 		.links {
 			.instagram,
 			#instagram {
-				height: 2rem;
+				height: 32px;
 			}
 		}
 	}
 }
 section {
+	padding: 1rem;
+	height: calc(100vh - 5rem);
+
 	&.landing {
+		overflow: hidden;
+		padding-bottom: 10rem;
+		height: 100%;
+		@include flex-container(row, center, center, nowrap);
 		.content {
-			@include flex-container(row, center, center, nowrap);
-			.text {
-				z-index: 2;
-			}
-			.phone {
-				z-index: 1;
-				margin-left: -10rem;
-				height: 28rem;
-				img {
-					height: 100%;
+			z-index: 2;
+			white-space: nowrap;
+			#my-form {
+				padding: 2rem 0;
+				@include flex-container(column, flex-start, flex-start, nowrap);
+				input {
+					margin: 0.5rem 0;
+					width: 100%;
+				}
+				button {
+					width: 100%;
 				}
 			}
 		}
-		form {
+		.phone {
+			z-index: 1;
+			max-width: 20rem;
+			img {
+				width: 100%;
+			}
+		}
+	}
+}
+@media screen and (max-width: 800px) {
+	section {
+		&.landing {
+			padding-bottom: 1rem;
+
+			@include flex-container(column, center, center, nowrap);
+			.content {
+				z-index: 2;
+				white-space: normal;
+			}
+			.phone {
+				z-index: 1;
+				bottom: 0;
+				max-width: 20rem;
+				img {
+					width: 100%;
+				}
+			}
 		}
 	}
 }

@@ -11,7 +11,7 @@ const header = /*html*/ `<header id="header">
 				<a
                 aria-label="visit quae's instagram account"
                 class="instagram"
-                href="https://www.instagram.com/quaeapp/"
+                href="https://www.instagram.com/leavenow.app/"
                 target="_blank"
                 rel="noopener noreferrer"
                 >
