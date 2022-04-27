@@ -6,7 +6,18 @@ $border: #404040;
 $text: #eee;
 * {
 	box-sizing: border-box;
-	font-size: 16px;
+}
+@media screen and (min-width: 800px) {
+	//big
+	html {
+		font-size: 20px;
+	}
+}
+@media screen and (max-width: 800px) {
+	//small
+	html {
+		font-size: 8px;
+	}
 }
 html {
 	margin: 0;
@@ -15,7 +26,6 @@ html {
 	overflow-x: hidden;
 	width: 100vw;
 	height: 100vh;
-	font-size: 20px;
 }
 @media screen and (max-width: 800px) {
 	html {
@@ -26,8 +36,7 @@ html {
 body {
 	padding: 0;
 	margin: 0;
-	overflow-x: hidden;
-	overflow: hidden;
+	overflow: scroll;
 	height: 100%;
 	width: 100%;
 	background-image: url("/assets/img/background.jpeg");
@@ -39,7 +48,7 @@ body {
 	position: fixed;
 	height: 100vh;
 	width: 100vw;
-	background-color: rgba(0, 0, 0, 0.4);
+	background-color: rgba(0, 0, 0, 0.6);
 	z-index: -1;
 }
 h1,
@@ -104,7 +113,9 @@ button {
 }
 
 #header {
+	z-index: 4;
 	width: 100vw;
+	position: fixed;
 	height: 5rem;
 	.header-content {
 		padding: 1rem;
@@ -124,16 +135,20 @@ button {
 }
 section {
 	padding: 1rem;
-	height: calc(100vh - 5rem);
-
+	height: calc(100% - 5rem);
 	&.landing {
-		overflow: hidden;
-		padding-bottom: 10rem;
-		height: 100%;
-		@include flex-container(row, center, center, nowrap);
+		@include flex-container(row, center, center, wrap);
+		padding-bottom: 5rem;
 		.content {
+			background: rgba(255, 255, 255, 0.25);
+			box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+			backdrop-filter: blur(4px);
+			-webkit-backdrop-filter: blur(4px);
+			border-radius: 10px;
+			border: 1px solid rgba(255, 255, 255, 0.18);
 			z-index: 2;
 			white-space: nowrap;
+			padding: 2rem 4rem;
 			#my-form {
 				padding: 2rem 0;
 				@include flex-container(column, flex-start, flex-start, nowrap);
@@ -148,7 +163,8 @@ section {
 		}
 		.phone {
 			z-index: 1;
-			max-width: 20rem;
+			width: 100%;
+			max-width: 30rem;
 			img {
 				width: 100%;
 			}
@@ -157,21 +173,14 @@ section {
 }
 @media screen and (max-width: 800px) {
 	section {
+		margin-top: 5rem;
 		&.landing {
 			padding-bottom: 1rem;
 
-			@include flex-container(column, center, center, nowrap);
+			@include flex-container(column, flex-start, center, nowrap);
 			.content {
 				z-index: 2;
 				white-space: normal;
-			}
-			.phone {
-				z-index: 1;
-				bottom: 0;
-				max-width: 20rem;
-				img {
-					width: 100%;
-				}
 			}
 		}
 	}
